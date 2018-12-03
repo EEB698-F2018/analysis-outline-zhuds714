@@ -13,6 +13,7 @@ rm(list = ls())
 library(RRPP)
 library(tidyverse) #loads ggplot2, tibble, tidyr, readr, purrr, dplyr, stringr, forcats
 
+
 #Load .csv dataset.  Default: Header=TRUE
 dirca <- read.csv("_data/raw/dirca.csv", na.strings = c("", "NA", "na", " "))
 
@@ -37,8 +38,14 @@ dirca <- rename(dirca, Lignified.Y.N = lignified.)
 dirca <- rename(dirca, Number.of.Cell.Width = num_of_cell_width)
 dirca <- rename(dirca, Seriate.Number = seriate_num)
 
+#Check Variable Class Assignment
+#Correct specimen_num & observation Class Assignments
+dirca$Specimen.Number <- as.factor(dirca$Specimen.Number)
+dirca$Observation <- as.factor(dirca$Observation)
+str(dirca) #check assignments have changed
+
 #Write tidy dataset .csv file
-write.csv(dirca, "_data/tidy/dirca_tidy.csv", row.names=F)
+write.csv(dirca, "_data/tidy/dirca_tidy.csv", row.names = F)
 
 #Load .csv dataset.  Default: Header=TRUE
 dirca.tidy <- read.csv("_data/tidy/dirca_tidy.csv", na.strings = c("", "NA", "na", " "))
@@ -46,6 +53,7 @@ dirca.tidy <- read.csv("_data/tidy/dirca_tidy.csv", na.strings = c("", "NA", "na
 #Explore tidy dataset
 summary(dirca.tidy)
 names(dirca.tidy)
+str(dirca.tidy)
 
 ##  ----------------------------------------------------------  ##
 # CREATING DATA SUBSETS ####
@@ -82,19 +90,38 @@ ray.subset <- subset.ray[,-c(7, 11)]
 
 #Histograms to check for normality
 ggplot(bark.fiber.subset, aes(x = Primarywall.Thickness.um, fill = Species)) +
-  geom_histogram()
+  geom_histogram()+
+  labs(x="Primary Wall Thickness (um)", y="Frequency")+
+  theme_bw()
+
+ggsave("Bark.Fiber.Primary.png")
 
 ggplot(bark.fiber.subset, aes(x = Secondarywall.Thickness.um, fill = Species)) +
-  geom_histogram()
+  geom_histogram()+
+  labs(x="Secondary Wall Thickness (um)", y="Frequency")+
+  theme_bw()
+
+ggsave("Bark.Fiber.Secondary.png")
 
 ggplot(bark.fiber.subset, aes(x = Length.um, fill = Species)) +
-  geom_histogram()
+  geom_histogram()+
+  labs(x="Cell Length (um)", y="Frequency")+
+  theme_bw()
+
+ggsave("Bark.Fiber.Length.png")
 
 ggplot(bark.fiber.subset, aes(x = Lumen.Diameter.um, fill = Species)) +
-  geom_histogram()
+  geom_histogram()+
+  labs(x="Lumen Diameter (um)", y="Frequency")+
+  theme_bw()
+
+ggsave("Bark.Fiber.Lumen.png")
 
 ggplot(bark.fiber.subset, aes(x = Cell.Total.Diameter.um, fill = Species)) +
-  geom_histogram()
+  geom_histogram()+
+  theme_bw()
+
+ggsave("Bark.Fiber.Diameter.png")
 
 ##  ----------------------------------------------------------  ##
 # DATA ANALYSIS ####
@@ -268,5 +295,28 @@ summary(ray.seriate.pairwise, confidence = .95)
 # DATA RESUTLS & GRAPHICS ####
 ##  ----------------------------------------------------------  ##
 
+ggplot(bark.fiber.subset, aes(Species, Primarywall.Thickness.um))+
+  geom_boxplot()+
+  labs(x="", y="Primary Wall Thickness (um)")+
+  theme_bw()
 
+ggsave("Bark.Fiber.Primary.Boxplot.png")
 
+ggplot(bark.fiber.subset, aes(Species, Secondarywall.Thickness.um))+
+  geom_boxplot()+
+  theme_bw()
+  
+ggplot(bark.fiber.subset, aes(Species, Length.um))+
+  geom_boxplot()+
+  labs(x="", y="Cell Length (um)")+
+  theme_bw()
+
+ggsave("Bark.Fiber.Length.Boxplot.png")
+  
+ggplot(bark.fiber.subset, aes(Species, Lumen.Diameter.um))+
+  geom_boxplot()+
+  theme_bw()
+  
+ggplot(bark.fiber.subset, aes(Species, Cell.Total.Diameter.um))+
+  geom_boxplot()+
+  theme_bw()
