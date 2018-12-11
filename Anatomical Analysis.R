@@ -282,32 +282,32 @@ ggplot(bark.fiber.subset, aes(Species, Primarywall.Thickness.um))+
   labs(x="", y="Primary Wall Thickness (um)")+
   theme_bw()
 
-ggsave("Bark.Fiber.Primary.Boxplot.png")
+ggsave("_graphics/Bark.Fiber.Primary.Boxplot.png")
 
 ggplot(bark.fiber.subset, aes(Species, Secondarywall.Thickness.um))+
   geom_boxplot()+
   labs(x="", y="Secondary Wall Thickness (um)")+
   theme_bw()
 
-ggsave("Bark.Fiber.Secondary.Boxplot.png")
+ggsave("_graphics/Bark.Fiber.Secondary.Boxplot.png")
   
 ggplot(bark.fiber.subset, aes(Species, Length.um))+
   geom_boxplot()+
   labs(x="", y="Cell Length (um)")+
   theme_bw()
 
-ggsave("Bark.Fiber.Length.Boxplot.png")
+ggsave("_graphics/Bark.Fiber.Length.Boxplot.png")
   
 ggplot(bark.fiber.subset, aes(Species, Lumen.Diameter.um))+
   geom_boxplot()+
   labs(x="", y="Lumen Diameter (um)")+
   theme_bw()
 
-ggsave("Bark.Fiber.Lumen.Boxplot.png")
+ggsave("_graphics/Bark.Fiber.Lumen.Boxplot.png")
   
 ggplot(bark.fiber.subset, aes(Species, Cell.Total.Diameter.um))+
   geom_boxplot()+
   labs(x="", y="Cell Total Diameter (um)")+
   theme_bw()
 
-ggsave("Bark.Fiber.Diameter.Boxplot.png")
+ggsave("_graphics/Bark.Fiber.Diameter.Boxplot.png")
