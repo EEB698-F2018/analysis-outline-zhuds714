@@ -94,6 +94,7 @@ ggplot(bark.fiber.subset.Ln, aes(x = Ln.Lumen.Diameter.um, fill = Species)) +
   labs(x="Ln(Lumen Diameter)", y="Frequency")+
   theme_bw()
 #transformation did not benefit normality
+ggsave("_graphics/Bark.Fiber.Lumen.Ln.png")
 
 ggplot(bark.fiber.subset, aes(x = Cell.Total.Diameter.um, fill = Species)) +
   geom_histogram()+
@@ -273,7 +274,7 @@ ray.seriate.pairwise <- pairwise(ray.seriate, groups = ray.subset$Species)
 summary(ray.seriate.pairwise, confidence = .95)
 
 ##  ----------------------------------------------------------  ##
-# DATA RESUTLS & GRAPHICS ####
+# DATA RESULTS & GRAPHICS ####
 ##  ----------------------------------------------------------  ##
 
 ggplot(bark.fiber.subset, aes(Species, Primarywall.Thickness.um))+
