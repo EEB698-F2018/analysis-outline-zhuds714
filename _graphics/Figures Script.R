@@ -101,7 +101,7 @@ ggsave("_graphics/Bark.Fiber.Diameter.Boxplot.png")
 ##  ----------------------------------------------------------  ##
 # TABLES ####
 ##  ----------------------------------------------------------  ##
-
+#pixiedust table making package is not compatible with RRPP so tables will be made in excel
 #Pull summmary statistics to enter into excel
 describeBy(bark.fiber.subset, bark.fiber.subset$Species)
 #describeBy reports mean, min, max, SE, SD, and other basic statistics by species and cell dimension
