@@ -7,8 +7,10 @@ library(tidyverse) #loads ggplot2, tibble, tidyr, readr, purrr, dplyr, stringr, 
 library(readxl) #hadley wickham's package for reading in excel files. not in Tidyverse.
 library(lubridate) #garett grolemund & hadley wickham's package for dates
 
+setwd("/Users/Dirca/Desktop/GitHub-RStudio/Dirca Anatomy Mock Data Analysis/_data/raw")
 #Load .csv dataset.  Default: Header=TRUE
-dirca <- read.csv("_data/raw/dirca.csv", na.strings = c("", "NA", "na", " "))
+#dirca <- read.csv("_data/raw/dirca.csv", na.strings = c("", "NA", "na", " "))
+dirca <- read.csv("dirca.csv", na.strings = c("", "NA", "na", " "))
 
 #Explore dataset
 summary(dirca)
@@ -43,4 +45,6 @@ dirca$Observation <- as.factor(dirca$Observation)
 str(dirca) #check assignments have changed
 
 #Create tidy database for analysis
-write.csv(dirca, "_data/tidy/dirca_tidy.csv", row.names=F)
+setwd("/Users/Dirca/Desktop/GitHub-RStudio/Dirca Anatomy Mock Data Analysis/_data/tidy")
+#write.csv(dirca, "_data/tidy/dirca_tidy.csv", row.names=F)
+write.csv(dirca, "dirca_tidy.csv", row.names=F)
