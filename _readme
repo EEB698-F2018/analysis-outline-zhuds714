@@ -1,0 +1,5 @@
+My repository on GitHub contains extra files (_Data, _Documents, _Library) which do not exist on my computer (screen-shot included (_data.png) to show they do not exist on computer).  I do not know how to get rid of them.  Also GitHub shows my raw.csv file is located within the _Data folder.  I included a screen-shot in the _data/raw folder showing my raw.csv file is located within the _data file on my computer (_data:raw:dirca.png).
+
+I was only able to create a RMarkdown file for my data wrangling script.  The solution I found required me to manuall set the working directory when reading in the raw file and again when creating the tidy file.  This solution did not work for the analysis and figures script, it actually created new errors.  Seeing as my script runs line-by-line without errors I am not going to continue to spend hours trying to remedy the issue with RMarkdown.
+
+Dirca is an archeological fiber.  There is no key to identify fibers from Dirca to species.  Are there differences in the anatomy of bark fibers that can be used to identify Dirca fibers to species.
